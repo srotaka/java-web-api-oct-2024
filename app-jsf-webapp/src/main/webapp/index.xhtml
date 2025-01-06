@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>	
+		<h:outputStylesheet library="webjars" name="/bootstrap/5.3.3/css/bootstrap-jsf.css"/>
+	</h:head>
+
+	<h:body>
+		<div class="container">
+			<div class="row col-12">
+			  <h1 class="display-4">Bienvenido!</h1>
+			  <p class="lead">EudacionIt - Curso Java Web Api</p>
+			  <hr class="my-4"/>
+			  <p>JSF + CDI</p>
+			  <h:link styleClass="btn btn-primary w-25" 
+			  	value="Ir A Login" 
+			  	outcome="login.xhtml?faces-redirect=true"
+			  />
+	          <h:link styleClass="btn btn-primary w-25" 
+	          	value="Volver a Inicio" 
+	          	outcome="index" 
+	          />			  
+			</div>
+		</div>
+	</h:body>
+</html>

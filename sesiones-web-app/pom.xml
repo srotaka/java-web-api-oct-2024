@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <!--referencia al proyecto padre -->
+  <parent>
+    <groupId>java-webapi-parent</groupId>
+    <artifactId>java-webapi-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  
+  <!--<groupId>java-webapi-parent</groupId>-->
+  <artifactId>sesiones-web-app</artifactId>
+  <!--<version>1.0.0-SNAPSHOT</version>-->
+  <packaging>war</packaging>
+  <name>sesiones-web-app Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <!--dependcias propias de este artefacto-->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+	<dependency>
+	    <groupId>jakarta.servlet</groupId>
+	    <artifactId>jakarta.servlet-api</artifactId>
+	    <version>6.1.0</version>
+	    <scope>provided</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api -->
+	<dependency>
+	    <groupId>jakarta.servlet.jsp</groupId>
+	    <artifactId>jakarta.servlet.jsp-api</artifactId>
+	    <version>4.0.0</version>
+	    <scope>provided</scope>
+	</dependency>
+	
+	<!--librerias propias-->
+	<dependency>
+	    <groupId>java-webapi-parent</groupId>
+	    <artifactId>app-service</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	</dependency>
+	
+	<!-- cliente soap -->
+	<!--librerias propias-->
+	<dependency>
+	    <groupId>java-webapi-parent</groupId>
+	    <artifactId>soap-app-client</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	</dependency>
+  </dependencies>
+  <build>
+    <finalName>sesiones-web-app</finalName>
+  </build>
+</project>

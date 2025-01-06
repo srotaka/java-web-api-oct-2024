@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<h:outputStylesheet library="webjars" name="/bootstrap/5.3.3/css/bootstrap-jsf.css"/>
+	</h:head>	
+	<h:body>
+		<p:growl id="msgs" showDetail="true"/>
+		<div class="container">
+			<div class="col-12">
+				<h1>Listado de productos</h1>				
+				<h:form>
+					<p:dataTable
+						id="productoTable"
+						styleClass="table"
+						value="#{productoBean.productos}"
+						var="producto"
+						rowKey="#{producto.id}"
+						selectionMode="single"
+						selection="#{productoBean.producto}"
+						editable="true"
+						>
+						
+						<p:ajax event="rowEdit" listener="#{productoBean.onRowEdit}" update="msgs"/>
+				        <p:ajax event="rowEditCancel" listener="#{productoBean.onRowCandel}" update="msgs"/>
+				        <p:ajax event="rowSelect" listener="#{productoBean.onRowSelect}"/>
+					
+						<p:column>
+							<f:facet name="header">Id</f:facet>
+							#{producto.id}
+						</p:column>			
+						<p:column>
+							<f:facet name="header">Código</f:facet>
+							#{producto.codigo}
+						</p:column>
+						<p:column headerText="Título">
+							<p:cellEditor>
+			                    <f:facet name="output">
+			                        <h:outputText value="#{producto.titulo}"/>
+			                    </f:facet>
+			                    <f:facet name="input">
+			                        <p:inputText value="#{producto.titulo}" style="width:100%"/>
+			                    </f:facet>
+			                </p:cellEditor>							
+						</p:column>
+						
+						<p:column headerText="Precio">
+							<p:cellEditor>
+			                    <f:facet name="output">
+			                        <h:outputText value="#{producto.precio}"/>			                        
+			                    </f:facet>
+			                    <f:facet name="input">
+			                        <p:inputText value="#{producto.precio}" style="width:100%"/>
+			                    </f:facet>
+			                </p:cellEditor>														
+						</p:column>
+						
+						<p:column headerText="Tipo Producto">
+						
+							<p:cellEditor>
+			                    <f:facet name="output">
+			                        <h:outputText value="#{producto.tipoProducto.descripcion}"/>			                        
+			                    </f:facet>
+			                    <f:facet name="input">
+			                        <p:selectOneMenu id="tipoProducto"
+			                        	value="#{productoBean.tipoProducto.id}">			                        
+			                        	<f:selectItems var="tipoProducto"
+						                	value="#{tipoProductoBean.tipoProductos}" 
+						                	itemLabel="#{tipoProducto.descripcion}" 
+						                	itemValue="#{tipoProducto.id}">
+						               </f:selectItems>
+			                        </p:selectOneMenu>
+			                    </f:facet>
+			                </p:cellEditor>	
+						</p:column>						
+						<p:column style="width:35px">
+				            <p:rowEditor />
+			        	</p:column>
+			        	<f:facet name="footer">
+			        		 <h:outputLabel value="Hay en total #{productoBean.productos.size()} productos" />			        	
+				        </f:facet>
+					</p:dataTable>
+		        	<p:contextMenu for="productoTable">
+				        <p:menuitem value="Eliminar" 
+				        	update="productoTable msgs" 
+				        	icon="pi pi-times" 
+				        	action="#{productoBean.eliminarProducto}"
+				        />
+				    </p:contextMenu>
+				</h:form>
+			</div>
+			<div class="col-12 text-center">
+				<h:form>
+					<h:commandButton
+						action="login-success.xhtml?faces-redirect=true"
+						value="Volver"
+						class="btn btn-secondary ml-2">
+					</h:commandButton>
+					<h:commandButton
+						action="nuevo-producto.xhtml?faces-redirect=true"
+						value="Nuevo"
+						class="btn btn-primary">
+					</h:commandButton>
+				</h:form>
+			</div>
+		</div>
+	</h:body>
+	
+</html>
